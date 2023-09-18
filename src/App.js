@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import {useState} from "react";
 
@@ -8,9 +7,24 @@ function App() {
   const [datetime, setDatetime] = useState('');
   const [description, setDescription] = useState('');
 
-  function addTransaction(e) {
-    const url = '';
-    fetch(url);
+  function addTransaction(ev) {
+    ev.preventDefault();
+    const url = "http://localhost:4040/api/transaction";
+    console.log(url);
+
+    fetch(url, {
+      method: 'POST',
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name,
+        description,
+        datetime
+      })
+    }).then(response => {
+      response.json().then(json => {
+        console.log("result", json);
+      });
+    });
   }
   return (
     <main>
