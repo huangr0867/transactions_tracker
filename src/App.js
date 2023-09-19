@@ -1,4 +1,5 @@
 import './App.css';
+import Title from './components/Title';
 import {useEffect, useState} from "react";
 
 function App() {
@@ -57,13 +58,14 @@ function App() {
 
   return (
     <main>
+        <Title />
         <h1>${balance}<span>{fraction}</span></h1>
         <form onSubmit={addTransaction}>
           <div className="basics">
             <input type="text"
                    value={name}
                    onChange={ev => setName(ev.target.value)}
-                   placeholder={'+200 new tv'}/>
+                   placeholder={'<price> <item>'}/>
             <input type="datetime-local"
                    value={datetime}
                    onChange={ev => setDatetime(ev.target.value)}/>
@@ -71,7 +73,7 @@ function App() {
           <div className="description">
             <input type="text"
                    value={description}
-                   placeholder={'description'}
+                   placeholder={'<description>'}
                    onChange={ev => setDescription(ev.target.value)}/>
           </div>
           <button type="submit">Add new transaction</button>
@@ -87,7 +89,7 @@ function App() {
               <div className={
                     "price " + (transaction.price < 0 ? "red" : "green")
                   }>${transaction.price}</div>
-              <div className="datetime">2022-12-18 15:45</div>
+              <div className="datetime">{transaction.datetime}</div>
             </div>
           </div>
           ))}

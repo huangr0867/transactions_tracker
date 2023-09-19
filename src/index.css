@@ -29,7 +29,11 @@ h1 {
 h1 span {
   font-size: 1rem;
   display: inline-block;
-  margin-top:6px;
+
+}
+
+h2 {
+  text-align: center;
 }
 
 form {
@@ -71,8 +75,10 @@ div.transactions {
 div.transaction {
   display: flex;
   justify-content: space-between;
-  padding: 5px 0;
-  border-top: 1px solid black;
+  padding: 5px;
+  border: 1px solid black;
+  margin-top: 5px;
+  border-radius: 10px;
 }
 
 div.transaction div.name {
@@ -99,4 +105,14 @@ div.price.red {
 div.transaction div.datetime {
   font-size: 0.8rem;
   color: #888;
+}
+
+img {
+  height: 18px;
+  width: 18px;
+}
+
+.nav_icon {
+  border: white;
+  background-color: transparent;
 }
