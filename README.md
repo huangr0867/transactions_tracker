@@ -1,8 +1,8 @@
-# Getting Started with Create React App
+# Transactions Tracker
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and created using yarn.
 
-## Available Scripts
+## Available Scripts for yarn
 
 In the project directory, you can run:
 
