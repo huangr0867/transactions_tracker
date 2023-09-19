@@ -45,9 +45,19 @@ function App() {
       });
     });
   }
+
+  let balance = 0;
+  for (const transaction of transactions) {
+    balance = balance + transaction.price;
+  }
+
+  balance = balance.toFixed(2);
+  const fraction = balance.split('.')[1];
+  balance = balance.split('.')[0];
+
   return (
     <main>
-        <h1>$400<span>.00</span></h1>
+        <h1>${balance}<span>{fraction}</span></h1>
         <form onSubmit={addTransaction}>
           <div className="basics">
             <input type="text"
@@ -67,27 +77,20 @@ function App() {
           <button type="submit">Add new transaction</button>
         </form>
         <div className="transactions">
-          <div className="transaction">
+          {transactions.length > 0 && transactions.map(transaction => (
+            <div className="transaction">
             <div className="left">
-              <div className="name">New TV</div>
-              <div className="description">time for new tv</div>
+              <div className="name">{transaction.name}</div>
+              <div className="description">{transaction.description}</div>
             </div>
             <div className="right">
-              <div className="price red">-$500</div>
+              <div className={
+                    "price " + (transaction.price < 0 ? "red" : "green")
+                  }>${transaction.price}</div>
               <div className="datetime">2022-12-18 15:45</div>
             </div>
           </div>
-
-          <div className="transaction">
-            <div className="left">
-              <div className="name">made website</div>
-              <div className="description">time for new tv</div>
-            </div>
-            <div className="right">
-              <div className="price green">+$400</div>
-              <div className="datetime">2022-12-18 15:45</div>
-            </div>
-          </div>
+          ))}
         </div>
       </main>
   );
