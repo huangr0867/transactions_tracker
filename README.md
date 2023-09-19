@@ -2,6 +2,12 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and created using yarn.
 
+Technologies Used:
+MongoDB - used to store transaction, handled in /api/index.js
+Express - used in /api/index.js
+React - used in /src/App.js to return components in /components (Title and TransactionsInfo)
+HTML/CSS - design in /src/index.css
+
 ## Available Scripts for yarn
 
 In the project directory, you can run:
