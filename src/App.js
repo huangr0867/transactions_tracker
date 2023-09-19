@@ -1,27 +1,46 @@
 import './App.css';
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
 function App() {
 
   const [name, setName] = useState('');
   const [datetime, setDatetime] = useState('');
   const [description, setDescription] = useState('');
+  const [transactions, setTransactions] = useState([]);
+
+  useEffect(() => {
+    getTransactions().then(transactions => {
+      setTransactions(transactions);
+    });
+  }, []);
+
+  async function getTransactions() {
+    const url = "http://localhost:4040/api/transactions";
+    const response = await fetch(url);
+    const json = await response.json();
+    return json;
+  }
 
   function addTransaction(ev) {
     ev.preventDefault();
     const url = "http://localhost:4040/api/transaction";
-    console.log(url);
+    const price = name.split(' ')[0];
+    // console.log(url);
 
     fetch(url, {
       method: 'POST',
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        name,
+        price,
+        name:name.substring(price.length+1),
         description,
         datetime
       })
     }).then(response => {
       response.json().then(json => {
+        setName('');
+        setDatetime('');
+        setDescription('');
         console.log("result", json);
       });
     });
