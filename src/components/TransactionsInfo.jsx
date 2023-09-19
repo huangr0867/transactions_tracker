@@ -15,7 +15,7 @@ const TransactionsInfo = () => {
   }, []);
 
   async function getTransactions() {
-    const url = "http://localhost:4040/api/transactions";
+    const url = "http://localhost:8080/api/transactions";
     const response = await fetch(url);
     const json = await response.json();
     return json;
@@ -23,7 +23,7 @@ const TransactionsInfo = () => {
 
   function addTransaction(ev) {
     ev.preventDefault();
-    const url = "http://localhost:4040/api/transaction";
+    const url = "http://localhost:8080/api/transaction";
     const price = name.split(' ')[0];
     // console.log(url);
 

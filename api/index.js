@@ -27,6 +27,6 @@ app.get('/api/transactions', async (req,res) => {
     res.json(transactions);
 });
 
-app.listen(4040);
+app.listen(8080);
 
 
